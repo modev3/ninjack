@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TON Wallet Connection</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff; /* Default text color white */
+        }
+
+        /* Button to open modal */
+        .open-button {
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #1a73e8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .open-button:hover {
+            background-color: #155db2;
+        }
+
+        /* Back to Main Page button */
+        .back-button {
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #000; /* Black text */
+            background-color: #fff; /* White background */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #eaeaea;
+        }
+
+        /* Center button container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Black with slight transparency */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #1c1c1c; /* Dark gray background */
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Subtle light shadow */
+        }
+
+        .modal-content h2 {
+            margin: 0 0 15px;
+            font-size: 1.5rem;
+            color: #fff; /* White text */
+        }
+
+        .modal-content p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #ccc; /* Light gray text */
+        }
+
+        .wallet-options {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .wallet-btn,
+        .cancel-btn {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .wallet-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .wallet-btn:hover {
+            background-color: #218838;
+        }
+
+        .cancel-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .cancel-btn:hover {
+            background-color: #c82333;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #ccc; /* Light gray text */
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #fff; /* White text */
+        }
+
+        /* Status message */
+        .status {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #ccc; /* Light gray */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Open Wallet Pop-up Button -->
+    <button id="openModalBtn" class="open-button">Connect TON Wallet</button>
+   
+    <!-- Modal Window -->
+    <div id="walletModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Connect Your TON Wallet</h2>
+            <p>Please connect your Telegram TON wallet to continue.</p>
+
+            <div class="wallet-options">
+                <button id="connectWallet" class="wallet-btn">Connect Wallet</button>
+                <button id="cancelWallet" class="cancel-btn">Cancel</button>
+            </div>
+
+            <div id="statusMessage" class="status"></div>
+            <div class="button-container">
+                <button class="back-button" id="backButton" onclick="goBack()">Back to Main Page</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const openModalBtn = document.getElementById('openModalBtn');
+        const walletModal = document.getElementById('walletModal');
+        const closeModalBtn = document.querySelector('.close-btn');
+        const cancelWalletBtn = document.getElementById('cancelWallet');
+        const connectWalletBtn = document.getElementById('connectWallet');
+        const statusMessage = document.getElementById('statusMessage');
+        const backButton = document.getElementById('backButton');
+
+        // Open modal
+        openModalBtn.addEventListener('click', () => {
+            walletModal.style.display = 'flex';
+        });
+
+        // Close modal
+        closeModalBtn.addEventListener('click', () => {
+            walletModal.style.display = 'none';
+            statusMessage.textContent = '';
+            backButton.style.display = 'none'; // Hide back button
+        });
+
+        cancelWalletBtn.addEventListener('click', () => {
+            walletModal.style.display = 'none';
+            statusMessage.textContent = '';
+            backButton.style.display = 'none'; // Hide back button
+        });
+
+        // Handle wallet connection
+        connectWalletBtn.addEventListener('click', () => {
+            statusMessage.textContent = 'This feature is coming soon. Stay tuned!';
+            backButton.style.display = 'block'; // Show back button
+        });
+
+        // Close modal when clicking outside content
+        window.addEventListener('click', (event) => {
+            if (event.target === walletModal) {
+                walletModal.style.display = 'none';
+                statusMessage.textContent = '';
+                backButton.style.display = 'none'; // Hide back button
+            }
+        });
+
+        // Redirect to main page
+        function goBack() {
+            window.location.href = 'index.html'; // Replace with the actual URL of the main page
+        }
+    </script>
+</body>
+</html>

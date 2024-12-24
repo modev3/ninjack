@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>- Boosters</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000; /* Arrière-plan noir */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Header styles */
+        .haeder {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .haeder a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #1f1f1f;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .haeder a:hover {
+            background-color: #333333;
+        }
+
+        /* User Balance Section */
+        .user-balance {
+            background-color: #1f1f1f;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .balance-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #aaaaaa;
+        }
+
+        .coin-count-container {
+            margin-bottom: 10px;
+        }
+
+        .coin-count-container img {
+            width: 45px;
+        }
+
+        /* Button styles */
+        .balance-guid a,
+        .connect-wallet-btn a {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underline */
+            text-transform: uppercase; /* Make text uppercase */
+            margin-bottom: 15px; /* Add some space between buttons */
+        }
+
+        .balance-guid a:hover,
+        .connect-wallet-btn a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Specific styles for "Earn More" button (gray with white text) */
+        .balance-guid a {
+            background-color: #808080; /* Gray background */
+        }
+
+        .balance-guid a:hover {
+            background-color: #666666; /* Darker gray on hover */
+        }
+
+        .select-none {
+            user-select: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .user-balance {
+                width: 90%;
+            }
+
+            .coin-count-container img {
+                width: 40px;
+            }
+
+            .balance-title {
+                font-size: 18px;
+            }
+
+            .balance-guid a,
+            .connect-wallet-btn a {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body class="boost">
+    
+    <!-- Header Section -->
+    <div class="haeder">
+        <a href="index.html">
+            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 11.9299H2" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.00009 19L2.84009 14C2.5677 13.7429 2.35071 13.433 2.20239 13.0891C2.05407 12.7452 1.97754 12.3745 1.97754 12C1.97754 11.6255 2.05407 11.2548 2.20239 10.9109C2.35071 10.567 2.5677 10.2571 2.84009 10L8.00009 5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- User Balance Section -->
+    <div class="user-balance">
+        <div class="balance-title select-none">Your balance</div>
+        <div class="coin-count-container">
+            <!-- Balance value remains intact as per the original request -->
+            <img src="./assets/images/apple.svg" width="45px" alt="Coin Icon">
+            <h1 class="select-none"></h1>
+        </div>
+        
+        <!-- Connect TON Wallet Button -->
+        <div class="connect-wallet-btn">
+            <a href="login.html" class="select-none">Connect TON Wallet</a>
+        </div>
+        
+        <br>
+        
+        <!-- Earn More Button (Updated to Gray with White Text) -->
+        <div class="balance-guid">
+            <a href="guid.html" class="select-none">Earn More</a>
+        </div>
+    </div>
+
+    <script src="./assets/images/script1.js"></script>
+    <script src="./assets/js/charge.js"></script>
+    <script src="./assets/js/boost.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
